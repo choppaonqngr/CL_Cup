@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Квадратные метры без сложностей — CL Cup Russia 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --font-sans: 'Inter', sans-serif;
+  --color-text-primary: #0B1B3F;
+  --color-text-secondary: #4A5568;
+  --color-text-tertiary: #8A96A8;
+  --color-background-primary: #FFFFFF;
+  --color-background-secondary: #F4F7FC;
+  --color-background-info: #E8F1FD;
+  --color-border-primary: #2264E5;
+  --color-border-secondary: #C5D3E8;
+  --color-border-tertiary: #E2EAF4;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#fff;color:#0B1B3F;line-height:1.6}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.96);backdrop-filter:blur(10px);border-bottom:1px solid #E2EAF4;padding:0 40px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;color:#0B1B3F;text-decoration:none}
+.nav-badge{width:32px;height:32px;background:#2264E5;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:800;letter-spacing:-.5px}
+.nav-links{display:flex;gap:2px}
+.nav-link{padding:6px 12px;border-radius:8px;font-size:13px;color:#4A5568;text-decoration:none;transition:all .15s;white-space:nowrap}
+.nav-link:hover{background:#F4F7FC;color:#0B1B3F}
+@media(max-width:768px){.nav-links{display:none}nav{padding:0 20px}}
+
+/* HERO */
+.hero{padding-top:60px;background:linear-gradient(135deg,#EBF4FF 0%,#F5F0FF 50%,#fff 100%);min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-80px;right:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(34,100,229,.09) 0%,transparent 70%);border-radius:50%}
+.hero-inner{max-width:1200px;margin:0 auto;padding:80px 40px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.hero-tag{display:inline-block;background:#E8F1FD;color:#2264E5;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:20px}
+.hero h1{font-size:50px;font-weight:900;line-height:1.1;color:#0B1B3F;margin-bottom:20px}
+.hero h1 span{color:#2264E5}
+.hero-desc{font-size:17px;color:#4A5568;line-height:1.7;margin-bottom:32px}
+.hero-kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.kpi{background:#fff;border-radius:14px;padding:18px;border:1px solid #E2EAF4;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.kpi-val{font-size:30px;font-weight:900;color:#2264E5;line-height:1;margin-bottom:4px}
+.kpi-lbl{font-size:11px;color:#8A96A8;line-height:1.4}
+.hero-card{background:#fff;border-radius:24px;padding:28px;box-shadow:0 20px 60px rgba(34,100,229,.14);width:100%;max-width:420px;margin:0 auto}
+.hero-card-title{font-size:12px;font-weight:600;color:#8A96A8;text-transform:uppercase;letter-spacing:.06em;margin-bottom:18px}
+.age-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.age-lbl{font-size:12px;color:#4A5568;width:65px;flex-shrink:0}
+.age-track{flex:1;height:8px;background:#F4F7FC;border-radius:4px;overflow:hidden}
+.age-fill{height:100%;border-radius:4px}
+.age-pct{font-size:12px;font-weight:600;width:40px;text-align:right}
+.hero-warning{margin-top:16px;padding:12px;background:#FFF8E1;border-radius:10px;font-size:12px;color:#92600A;font-weight:500}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr;gap:40px}.hero h1{font-size:36px}.hero-card{display:none}}
+
+/* COMMON SECTION */
+.sw{padding:80px 0}
+.sw.alt{background:#F8FAFD}
+.sw.dark{background:#0B1B3F}
+.container{max-width:1200px;margin:0 auto;padding:0 40px}
+@media(max-width:768px){.container{padding:0 20px}.sw{padding:60px 0}}
+
+.step-tag{display:inline-flex;align-items:center;gap:8px;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px}
+.step-num{width:22px;height:22px;border-radius:50%;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.st-blue{background:#E8F1FD;color:#2264E5}
+.st-purple{background:#EEEDFE;color:#3C3489}
+.st-green{background:#E1F5EE;color:#085041}
+.st-orange{background:#FAEEDA;color:#633806}
+.st-red{background:#FAECE7;color:#712B13}
+
+h2.sec-title{font-size:40px;font-weight:800;color:#0B1B3F;line-height:1.15;margin-bottom:12px}
+.sw.dark h2.sec-title{color:#fff}
+.sec-sub{font-size:17px;color:#4A5568;max-width:640px;line-height:1.7;margin-bottom:48px}
+.sw.dark .sec-sub{color:rgba(255,255,255,.6)}
+@media(max-width:768px){h2.sec-title{font-size:28px}}
+
+/* STEP OVERVIEW CARDS */
+.overview-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.ov-card{background:#fff;border-radius:16px;padding:24px;border:1px solid #E2EAF4;transition:all .2s}
+.ov-card:hover{border-color:#A8C4F0;box-shadow:0 8px 24px rgba(34,100,229,.1);transform:translateY(-2px)}
+.ov-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px}
+.ov-card h3{font-size:15px;font-weight:600;color:#0B1B3F;margin-bottom:8px}
+.ov-card p{font-size:13px;color:#4A5568;line-height:1.6}
+
+/* SURVEY STATS */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-bottom:48px}
+.stat-box{background:#fff;border-radius:16px;padding:22px;border:1px solid #E2EAF4;text-align:center}
+.stat-val{font-size:38px;font-weight:900;color:#2264E5;line-height:1;margin-bottom:8px}
+.stat-lbl{font-size:12px;color:#4A5568;line-height:1.4}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+@media(max-width:900px){.two-col{grid-template-columns:1fr}}
+
+.bar-item{margin-bottom:16px}
+.bar-head{display:flex;justify-content:space-between;margin-bottom:6px}
+.bar-lbl{font-size:13px;color:#0B1B3F;font-weight:500}
+.bar-pct{font-size:13px;font-weight:700;color:#2264E5}
+.bar-track{height:8px;background:#EBF1FB;border-radius:4px;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,#2264E5,#4B89F5)}
+
+.barriers-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.barrier{display:flex;align-items:flex-start;gap:12px;padding:14px;background:#fff;border-radius:12px;border:1px solid #E2EAF4}
+.b-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.b-text h4{font-size:13px;font-weight:600;color:#0B1B3F;margin-bottom:4px}
+.b-text p{font-size:12px;color:#4A5568;line-height:1.5}
+.insight{background:linear-gradient(135deg,#EBF4FF,#F4EDFF);border-radius:14px;padding:20px;border-left:4px solid #2264E5;margin-top:20px}
+.insight-lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#2264E5;margin-bottom:6px}
+.insight-txt{font-size:15px;color:#0B1B3F;line-height:1.6;font-weight:500}
+
+/* EMBED BOX */
+.embed-box{background:#fff;border-radius:20px;border:1px solid #E2EAF4;padding:24px;box-shadow:0 4px 16px rgba(0,0,0,.04)}
+
+/* BUDGET BLOCK */
+.budget-block{background:#0B1B3F;border-radius:20px;padding:32px;color:#fff;margin-bottom:32px}
+.budget-block-lbl{font-size:12px;font-weight:600;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.06em;margin-bottom:24px}
+.budget-nums{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.budget-num .val{font-size:34px;font-weight:900;color:#fff;line-height:1;margin-bottom:6px}
+.budget-num .lbl{font-size:12px;color:rgba(255,255,255,.5)}
+@media(max-width:768px){.budget-nums{grid-template-columns:1fr 1fr}}
+
+/* FOOTER */
+footer{background:#0B1B3F;color:rgba(255,255,255,.55);padding:40px;text-align:center;font-size:13px}
+footer strong{color:#fff}
+
+/* EMBEDDED WHY STYLES */
+#why-embed .wrap{padding:0}
+#why-embed .title{font-size:14px;font-weight:600;color:#0B1B3F;margin-bottom:4px}
+#why-embed .subtitle{font-size:12px;color:#4A5568;margin-bottom:16px}
+#why-embed .level-label{font-size:10px;font-weight:600;color:#8A96A8;letter-spacing:.05em;margin:14px 0 6px;text-transform:uppercase}
+#why-embed .row{display:flex;gap:8px;flex-wrap:wrap}
+#why-embed .node{border-radius:10px;padding:10px 14px;cursor:pointer;transition:opacity .15s,transform .15s;border:1.5px solid transparent;flex:1;min-width:155px;max-width:310px}
+#why-embed .node:hover{transform:translateY(-1px);opacity:.9}
+#why-embed .node.active{border-color:#2264E5!important;box-shadow:0 0 0 2px #E8F1FD}
+#why-embed .node-q{font-size:12px;font-weight:500;margin-bottom:2px}
+#why-embed .node-a{font-size:11px;opacity:.8;line-height:1.5}
+#why-embed .node-stat{font-size:10px;margin-top:5px;font-weight:500;border-radius:4px;display:inline-block;padding:1px 6px}
+#why-embed .connector{display:flex;justify-content:center;height:20px;color:#8A96A8;font-size:16px;align-items:center}
+#why-embed .why-detail{border-radius:12px;padding:14px 16px;margin-top:10px;border:1px solid #E2EAF4;background:#F8FAFD;display:none}
+#why-embed .why-detail.show{display:block}
+#why-embed .d-title{font-size:13px;font-weight:600;color:#0B1B3F;margin-bottom:6px}
+#why-embed .d-text{font-size:12px;color:#4A5568;line-height:1.65;margin-bottom:8px}
+#why-embed .d-init{border-radius:8px;padding:8px 12px;font-size:12px;font-weight:500}
+#why-embed .legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+#why-embed .leg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:#4A5568}
+#why-embed .leg-dot{width:10px;height:10px;border-radius:3px}
+
+/* EMBEDDED IDEAS STYLES */
+#ideas-embed .w{padding:0;font-family:'Inter',sans-serif}
+#ideas-embed .top-bar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+#ideas-embed .tbtn{padding:5px 12px;border-radius:20px;border:.5px solid #E2EAF4;background:#fff;color:#4A5568;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s}
+#ideas-embed .tbtn:hover{background:#F4F7FC}
+#ideas-embed .tbtn.on{background:#F4F7FC;color:#0B1B3F;border-color:#C5D3E8;font-weight:500}
+#ideas-embed .budget-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+#ideas-embed .bcard{border-radius:8px;background:#F4F7FC;padding:8px 14px;font-size:12px;color:#4A5568;flex:1;min-width:100px}
+#ideas-embed .bcard span{display:block;font-size:15px;font-weight:600;color:#0B1B3F;margin-top:2px}
+#ideas-embed .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:8px}
+#ideas-embed .card{border-radius:10px;border:.5px solid #E2EAF4;padding:12px 14px;cursor:pointer;transition:all .15s;background:#fff;position:relative}
+#ideas-embed .card:hover{border-color:#C5D3E8;background:#F4F7FC}
+#ideas-embed .card.sel{border-color:#2264E5;background:#F4F7FC}
+#ideas-embed .card-rank{position:absolute;top:10px;right:10px;font-size:11px;font-weight:500;padding:2px 7px;border-radius:10px}
+#ideas-embed .card-top{display:flex;gap:8px;align-items:flex-start;margin-bottom:5px;padding-right:62px}
+#ideas-embed .card-num{font-size:11px;color:#8A96A8;min-width:18px;padding-top:1px}
+#ideas-embed .card-title{font-size:13px;font-weight:500;color:#0B1B3F;line-height:1.4}
+#ideas-embed .card-desc{font-size:11px;color:#4A5568;line-height:1.5;margin-bottom:6px}
+#ideas-embed .card-meta{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+#ideas-embed .pill{font-size:10px;padding:2px 7px;border-radius:10px;white-space:nowrap}
+#ideas-embed .stars{font-size:11px;color:#8A96A8}
+#ideas-embed .dp{border-radius:12px;border:.5px solid #E2EAF4;padding:16px;margin-top:12px;background:#F4F7FC;display:none}
+#ideas-embed .dp.show{display:block}
+#ideas-embed .dp-title{font-size:14px;font-weight:600;color:#0B1B3F;margin-bottom:10px}
+#ideas-embed .dp-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+#ideas-embed .dp-cell{background:#fff;border-radius:8px;padding:8px 10px;border:.5px solid #E2EAF4}
+#ideas-embed .dp-label{font-size:10px;color:#8A96A8;margin-bottom:2px}
+#ideas-embed .dp-val{font-size:12px;color:#0B1B3F}
+#ideas-embed .dp-rat{font-size:12px;color:#4A5568;line-height:1.6;margin-bottom:10px}
+#ideas-embed .road-title{font-size:11px;color:#8A96A8;margin-bottom:6px;font-weight:500}
+#ideas-embed .road-row{display:flex;gap:6px;margin-bottom:4px;align-items:center}
+#ideas-embed .road-yr{font-size:11px;font-weight:500;min-width:42px;color:#4A5568}
+#ideas-embed .road-bar{height:6px;border-radius:3px;flex:1;background:#E2EAF4}
+#ideas-embed .road-fill{height:6px;border-radius:3px}
+#ideas-embed .sep{border:none;border-top:.5px solid #E2EAF4;margin:10px 0}
+
+/* EMBEDDED ROADMAP STYLES */
+#rm-embed .w{padding:0;font-family:'Inter',sans-serif}
+#rm-embed .phase{margin-bottom:20px}
+#rm-embed .ph-head{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;padding:12px 14px;border-radius:10px}
+#rm-embed .ph-badge{font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;white-space:nowrap}
+#rm-embed .ph-title{font-size:14px;font-weight:600}
+#rm-embed .ph-stats{display:flex;gap:12px;font-size:11px;margin-top:3px;flex-wrap:wrap}
+#rm-embed .ig{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:6px}
+#rm-embed .idea{border-radius:8px;border:.5px solid #E2EAF4;padding:10px 12px;cursor:pointer;transition:all .15s;background:#fff}
+#rm-embed .idea:hover{border-color:#C5D3E8;background:#F4F7FC}
+#rm-embed .idea.open{border-color:#2264E5}
+#rm-embed .idea-top{display:flex;gap:6px;align-items:flex-start;margin-bottom:4px}
+#rm-embed .idea-num{font-size:10px;color:#8A96A8;padding-top:1px;min-width:18px}
+#rm-embed .idea-title{font-size:12px;font-weight:500;color:#0B1B3F;line-height:1.4;flex:1}
+#rm-embed .idea-cat{font-size:10px;padding:1px 6px;border-radius:8px;white-space:nowrap}
+#rm-embed .idea-row{display:flex;gap:8px;align-items:center;margin-top:4px;flex-wrap:wrap}
+#rm-embed .idea-budget{font-size:11px;color:#4A5568}
+#rm-embed .idea-dur{font-size:10px;padding:1px 6px;border-radius:6px;background:#F4F7FC;color:#4A5568}
+#rm-embed .impact-dots{display:flex;gap:2px}
+#rm-embed .dot{width:6px;height:6px;border-radius:50%}
+#rm-embed .detail{border-radius:8px;padding:10px 12px;margin-top:6px;display:none;font-size:12px;color:#4A5568;line-height:1.6;border:.5px solid #E2EAF4;background:#F4F7FC}
+#rm-embed .detail.show{display:block}
+#rm-embed .ph-total{display:flex;gap:6px;padding:8px 12px;border-radius:8px;margin-top:8px;background:#F4F7FC;font-size:12px;color:#4A5568}
+#rm-embed .ph-total b{color:#0B1B3F;font-weight:500}
+#rm-embed .bbar-label{font-size:11px;color:#8A96A8;margin-bottom:6px}
+#rm-embed .bbar-track{height:8px;border-radius:4px;background:#E2EAF4;position:relative;overflow:hidden;margin-bottom:8px}
+#rm-embed .bbar-seg{height:8px;position:absolute;top:0}
+#rm-embed .bbar-legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+#rm-embed .bl-item{display:flex;align-items:center;gap:5px;font-size:11px;color:#4A5568}
+#rm-embed .bl-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
+#rm-embed .divider{border:none;border-top:.5px solid #E2EAF4;margin:16px 0}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-badge">СФН</div>
+    <span>CL Cup Russia 2026</span>
+  </a>
+  <div class="nav-links">
+    <a class="nav-link" href="#problem">Задача</a>
+    <a class="nav-link" href="#survey">Опрос</a>
+    <a class="nav-link" href="#analysis">Анализ</a>
+    <a class="nav-link" href="#why">15 Почему</a>
+    <a class="nav-link" href="#ideas">Идеи</a>
+    <a class="nav-link" href="#roadmap">Дорожная карта</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">CL Cup Russia 2026 · УК «СФН»</div>
+      <h1>Квадратные метры <span>без сложностей</span></h1>
+      <p class="hero-desc">Как увеличить долю молодых инвесторов до 35 лет в ЗПИФ недвижимости с 3% до 10% за 3 года — исследование, диагностика и дорожная карта.</p>
+      <div class="hero-kpi">
+        <div class="kpi"><div class="kpi-val">3%</div><div class="kpi-lbl">Доля молодёжи сегодня</div></div>
+        <div class="kpi"><div class="kpi-val">10%</div><div class="kpi-lbl">Целевой показатель</div></div>
+        <div class="kpi"><div class="kpi-val">3 года</div><div class="kpi-lbl">Горизонт реализации</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="hero-card">
+        <div class="hero-card-title">Возрастная структура пайщиков УК «СФН»</div>
+        <div class="age-row"><span class="age-lbl">58–71 лет</span><div class="age-track"><div class="age-fill" style="width:53%;background:#2264E5"></div></div><span class="age-pct" style="color:#2264E5">53%</span></div>
+        <div class="age-row"><span class="age-lbl">46–57 лет</span><div class="age-track"><div class="age-fill" style="width:27.8%;background:#4B89F5"></div></div><span class="age-pct" style="color:#4B89F5">27.8%</span></div>
+        <div class="age-row"><span class="age-lbl">36–45 лет</span><div class="age-track"><div class="age-fill" style="width:12%;background:#7BAAFF"></div></div><span class="age-pct" style="color:#7BAAFF">12%</span></div>
+        <div class="age-row"><span class="age-lbl">26–35 лет</span><div class="age-track"><div class="age-fill" style="width:3.07%;background:#F59E0B"></div></div><span class="age-pct" style="color:#F59E0B">3.07%</span></div>
+        <div class="age-row"><span class="age-lbl">18–25 лет</span><div class="age-track"><div class="age-fill" style="width:0.3%;background:#EF4444"></div></div><span class="age-pct" style="color:#EF4444">0.3%</span></div>
+        <div class="hero-warning"> Молодёжь до 35 лет — всего 3.37% пайщиков</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section id="problem">
+<div class="sw alt">
+<div class="container">
+  <div class="step-tag st-blue"><span class="step-num" style="background:#2264E5">★</span>Ход работы</div>
+  <h2 class="sec-title">Как мы подходили к решению</h2>
+  <p class="sec-sub">Разложили проблему на 5 последовательных шагов — от первичного исследования аудитории до конкретной дорожной карты с бюджетом и KPI.</p>
+  <div class="overview-grid">
+    <div class="ov-card"><div class="ov-icon" style="background:#EEEDFE">1</div><h3>Опрос</h3><p>Провели количественный опрос 70 молодых людей (18–35 лет). Собрали данные об осведомлённости, барьерах и инвестиционных предпочтениях.</p></div>
+    <div class="ov-card"><div class="ov-icon" style="background:#E8F1FD">2</div><h3>Анализ данных</h3><p>Структурировали результаты: выявили сегменты, основные барьеры и паттерны поведения молодых инвесторов.</p></div>
+    <div class="ov-card"><div class="ov-icon" style="background:#FAECE7">3</div><h3>Метод 5 Почему</h3><p>Применили технику 5 Why в трёх ветках — вскрыли корневые причины низкого проникновения ЗПИФов среди молодёжи.</p></div>
+    <div class="ov-card"><div class="ov-icon" style="background:#E1F5EE">4</div><h3>50 Идей</h3><p>Разработали 50 инициатив и расставили приоритеты по влиянию на цель, бюджету и сложности реализации.</p></div>
+    <div class="ov-card"><div class="ov-icon" style="background:#FAEEDA">5</div><h3>Дорожная карта</h3><p>Отобрали 18 инициатив с бюджетом 91 млн ₽, разбили на 6 этапов с конкретными целями по росту доли молодых пайщиков.</p></div>
+    <div class="ov-card" style="border-color:#2264E5;background:#EBF4FF"><div class="ov-icon" style="background:#fff">6</div><h3>Итоговая цель</h3><p><strong>3% → 10%</strong> доля молодёжи за 3 года. <strong>20 000+</strong> новых молодых пайщиков. Бюджет: <strong>91 млн рублей</strong>.</p></div>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- SURVEY -->
+<section id="survey">
+<div class="sw">
+<div class="container">
+  <div class="step-tag st-purple"><span class="step-num" style="background:#3C3489">1</span>Шаг первый</div>
+  <h2 class="sec-title">Опрос молодёжной аудитории</h2>
+  <p class="sec-sub">70 респондентов 18–35 лет. Цель — понять уровень осведомлённости о ЗПИФ, барьеры входа и инвестиционные предпочтения потенциальной аудитории.</p>
+
+  <div class="stats-row">
+    <div class="stat-box"><div class="stat-val">70</div><div class="stat-lbl">Респондентов прошли опрос</div></div>
+    <div class="stat-box"><div class="stat-val">61%</div><div class="stat-lbl">Впервые услышали о ЗПИФ</div></div>
+    <div class="stat-box"><div class="stat-val">78%</div><div class="stat-lbl">Хотят горизонт до 3 лет</div></div>
+    <div class="stat-box"><div class="stat-val">61%</div><div class="stat-lbl">Не знали про вход от 6 ₽</div></div>
+    <div class="stat-box"><div class="stat-val">47%</div><div class="stat-lbl">Не знали о торговле на бирже</div></div>
+    <div class="stat-box"><div class="stat-val">28</div><div class="stat-lbl">Готовы инвестировать при снятии барьеров</div></div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h3 style="font-size:17px;font-weight:700;margin-bottom:20px">Осведомлённость о ЗПИФ</h3>
+      <div class="bar-item"><div class="bar-head"><span class="bar-lbl">Впервые слышат</span><span class="bar-pct">47%</span></div><div class="bar-track"><div class="bar-fill" style="width:47%"></div></div></div>
+      <div class="bar-item"><div class="bar-head"><span class="bar-lbl">Слышали, плохо понимают</span><span class="bar-pct" style="color:#7F77DD">44%</span></div><div class="bar-track"><div class="bar-fill" style="width:44%;background:linear-gradient(90deg,#7F77DD,#A89EEE)"></div></div></div>
+      <div class="bar-item"><div class="bar-head"><span class="bar-lbl">Хорошо знакомы</span><span class="bar-pct" style="color:#1D9E75">9%</span></div><div class="bar-track"><div class="bar-fill" style="width:9%;background:linear-gradient(90deg,#1D9E75,#3DC99A)"></div></div></div>
+
+      <h3 style="font-size:17px;font-weight:700;margin:32px 0 20px">Желаемый горизонт инвестиций</h3>
+      <div class="bar-item"><div class="bar-head"><span class="bar-lbl">До 1 года</span><span class="bar-pct" style="color:#D85A30">38%</span></div><div class="bar-track"><div class="bar-fill" style="width:38%;background:linear-gradient(90deg,#D85A30,#F07A56)"></div></div></div>
+      <div class="bar-item"><div class="bar-head"><span class="bar-lbl">1–3 года</span><span class="bar-pct" style="color:#BA7517">40%</span></div><div class="bar-track"><div class="bar-fill" style="width:40%;background:linear-gradient(90deg,#BA7517,#D99430)"></div></div></div>
+      <div class="bar-item"><div class="bar-head"><span class="bar-lbl">3–7 лет</span><span class="bar-pct">16%</span></div><div class="bar-track"><div class="bar-fill" style="width:16%"></div></div></div>
+      <div class="bar-item"><div class="bar-head"><span class="bar-lbl">Более 7 лет</span><span class="bar-pct">6%</span></div><div class="bar-track"><div class="bar-fill" style="width:6%"></div></div></div>
+
+      <h3 style="font-size:17px;font-weight:700;margin:32px 0 20px">Предпочитаемые источники информации</h3>
+      <div class="bar-item"><div class="bar-head"><span class="bar-lbl">Приложение банка / Telegram</span><span class="bar-pct">#1</span></div><div class="bar-track"><div class="bar-fill" style="width:75%"></div></div></div>
+      <div class="bar-item"><div class="bar-head"><span class="bar-lbl">Финансовые блогеры</span><span class="bar-pct">#2</span></div><div class="bar-track"><div class="bar-fill" style="width:58%;background:linear-gradient(90deg,#7F77DD,#A89EEE)"></div></div></div>
+      <div class="bar-item"><div class="bar-head"><span class="bar-lbl">Советы друзей</span><span class="bar-pct">#3</span></div><div class="bar-track"><div class="bar-fill" style="width:44%;background:linear-gradient(90deg,#1D9E75,#3DC99A)"></div></div></div>
+    </div>
+    <div>
+      <h3 style="font-size:17px;font-weight:700;margin-bottom:20px">Ключевые барьеры для входа</h3>
+      <div class="barriers-grid">
+        <div class="barrier"><div class="b-icon" style="background:#EEEDFE">1</div><div class="b-text"><h4>Сложность продукта</h4><p>Непонятные термины, финансовый язык</p></div></div>
+        <div class="barrier"><div class="b-icon" style="background:#E1F5EE">2</div><div class="b-text"><h4>Долгий срок</h4><p>7–15 лет против желаемых 1–3 года</p></div></div>
+        <div class="barrier"><div class="b-icon" style="background:#FAECE7">3</div><div class="b-text"><h4>Нет доверия</h4><p>Нет историй молодых пайщиков</p></div></div>
+        <div class="barrier"><div class="b-icon" style="background:#FAEEDA">4</div><div class="b-text"><h4>«Нет денег»</h4><p>Не знают о входе от 6 рублей</p></div></div>
+        <div class="barrier"><div class="b-icon" style="background:#E8F1FD">5</div><div class="b-text"><h4>Нет рекламы</h4><p>СФН почти нет в Telegram / YouTube</p></div></div>
+        <div class="barrier"><div class="b-icon" style="background:#FFF0F5">6</div><div class="b-text"><h4>Нет ликвидности</h4><p>Не знают о биржевом обращении</p></div></div>
+      </div>
+      <div class="insight">
+        <div class="insight-lbl">Ключевой инсайт опроса</div>
+        <div class="insight-txt">28 из 70 готовы инвестировать — если объяснить продукт и снять ключевые барьеры. Проблема не в отсутствии интереса, а в информационном вакууме.</div>
+      </div>
+
+      <h3 style="font-size:17px;font-weight:700;margin:28px 0 16px">Текущие инвестиции молодёжи</h3>
+      <div class="bar-item"><div class="bar-head"><span class="bar-lbl">Банковский вклад</span><span class="bar-pct">43%</span></div><div class="bar-track"><div class="bar-fill" style="width:43%"></div></div></div>
+      <div class="bar-item"><div class="bar-head"><span class="bar-lbl">Акции / ETF</span><span class="bar-pct" style="color:#7F77DD">31%</span></div><div class="bar-track"><div class="bar-fill" style="width:31%;background:linear-gradient(90deg,#7F77DD,#A89EEE)"></div></div></div>
+      <div class="bar-item"><div class="bar-head"><span class="bar-lbl">Криптовалюта</span><span class="bar-pct" style="color:#D85A30">22%</span></div><div class="bar-track"><div class="bar-fill" style="width:22%;background:linear-gradient(90deg,#D85A30,#F07A56)"></div></div></div>
+      <div class="bar-item"><div class="bar-head"><span class="bar-lbl">ЗПИФ / ПИФ</span><span class="bar-pct" style="color:#1D9E75">4%</span></div><div class="bar-track"><div class="bar-fill" style="width:4%;background:linear-gradient(90deg,#1D9E75,#3DC99A)"></div></div></div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- ANALYSIS -->
+<section id="analysis">
+<div class="sw alt">
+<div class="container">
+  <div class="step-tag st-blue"><span class="step-num" style="background:#2264E5">2</span>Шаг второй</div>
+  <h2 class="sec-title">Анализ данных и сегментация</h2>
+  <p class="sec-sub">Структурировали результаты опроса, выявили три ключевых сегмента молодёжной аудитории с разными потребностями и барьерами входа.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:40px">
+    <div style="background:#fff;border-radius:16px;padding:24px;border:2px solid #2264E5">
+      <div style="display:inline-block;background:#E8F1FD;color:#2264E5;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:12px">Сегмент A · 40%</div>
+      <h3 style="font-size:16px;font-weight:700;margin-bottom:8px">Осознанный инвестор</h3>
+      <p style="font-size:13px;color:#4A5568;line-height:1.6;margin-bottom:12px">25–35 лет, доход 60–120к₽, уже инвестирует в акции/ETF. Знает о ЗПИФ, но не понимает преимуществ перед привычными инструментами.</p>
+      <div style="font-size:12px;color:#2264E5;font-weight:500">→ Нужен: сравнительный анализ, калькулятор доходности, прозрачность</div>
+    </div>
+    <div style="background:#fff;border-radius:16px;padding:24px;border:1px solid #E2EAF4">
+      <div style="display:inline-block;background:#EEEDFE;color:#3C3489;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:12px">Сегмент B · 35%</div>
+      <h3 style="font-size:16px;font-weight:700;margin-bottom:8px">Начинающий вкладчик</h3>
+      <p style="font-size:13px;color:#4A5568;line-height:1.6;margin-bottom:12px">20–30 лет, доход до 60к₽, держит деньги на вкладе. Не слышал о ЗПИФ, пугается сложных терминов и долгого срока.</p>
+      <div style="font-size:12px;color:#3C3489;font-weight:500">→ Нужен: простой язык, аналогия с чем-то знакомым, минимальный порог</div>
+    </div>
+    <div style="background:#fff;border-radius:16px;padding:24px;border:1px solid #E2EAF4">
+      <div style="display:inline-block;background:#FAECE7;color:#712B13;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:12px">Сегмент C · 25%</div>
+      <h3 style="font-size:16px;font-weight:700;margin-bottom:8px">Скептик / крипто-инвестор</h3>
+      <p style="font-size:13px;color:#4A5568;line-height:1.6;margin-bottom:12px">18–28 лет, инвестирует в крипту/акции, ищет высокую доходность. ЗПИФ кажется «скучным» и негибким.</p>
+      <div style="font-size:12px;color:#712B13;font-weight:500">→ Нужен: peer-proof, данные о доходности, биржевое обращение паев</div>
+    </div>
+  </div>
+
+  <div style="background:#0B1B3F;border-radius:20px;padding:32px;color:#fff">
+    <div style="font-size:12px;font-weight:600;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.06em;margin-bottom:20px">Структурное противоречие кейса</div>
+    <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center">
+      <div style="background:rgba(255,255,255,.07);border-radius:14px;padding:24px">
+        <div style="font-size:12px;color:rgba(255,255,255,.45);margin-bottom:8px">Что хочет молодёжь</div>
+        <div style="font-size:20px;font-weight:800;color:#fff;margin-bottom:8px">Горизонт 1–3 года</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.6)">78% готовы инвестировать максимум на 3 года</div>
+      </div>
+      <div style="font-size:32px;color:rgba(255,255,255,.2)">≠</div>
+      <div style="background:rgba(255,255,255,.07);border-radius:14px;padding:24px">
+        <div style="font-size:12px;color:rgba(255,255,255,.45);margin-bottom:8px">Что предлагает рынок</div>
+        <div style="font-size:20px;font-weight:800;color:#fff;margin-bottom:8px">Горизонт 7–15 лет</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.6)">Средний срок фондов УК «СФН»</div>
+      </div>
+    </div>
+    <div style="margin-top:20px;padding:16px;background:rgba(34,100,229,.25);border-radius:12px;font-size:14px;color:rgba(255,255,255,.85)">
+       <strong style="color:#fff">Решение:</strong> продвигать биржевые паи «Современный 9» (тикер RU000A1099U0) — продаются на Мосбирже как обычные акции, вход от 6 рублей
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- 15 WHY -->
+<section id="why">
+<div class="sw">
+<div class="container">
+  <div class="step-tag st-red"><span class="step-num" style="background:#712B13">3</span>Шаг третий</div>
+  <h2 class="sec-title">Метод 5 Почему</h2>
+  <p class="sec-sub">Применили технику «5 Почему» в трёх независимых ветках — по осведомлённости, ликвидности и доверию — чтобы вскрыть корневые причины.</p>
+  <div class="embed-box">
+    <div id="why-embed">
+      <div class="legend">
+        <div class="leg-item"><div class="leg-dot" style="background:#7F77DD"></div>Осведомлённость</div>
+        <div class="leg-item"><div class="leg-dot" style="background:#1D9E75"></div>Горизонт / ликвидность</div>
+        <div class="leg-item"><div class="leg-dot" style="background:#D85A30"></div>Доверие / страх</div>
+        <div class="leg-item"><div class="leg-dot" style="background:#BA7517"></div>Деньги / доступность</div>
+        <div class="leg-item"><div class="leg-dot" style="background:#378ADD"></div>UX / каналы</div>
+      </div>
+      <div id="why-tree"></div>
+      <div class="why-detail" id="why-detail">
+        <div class="d-title" id="why-d-title"></div>
+        <div class="d-text" id="why-d-text"></div>
+        <div class="d-init" id="why-d-init"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- IDEAS -->
+<section id="ideas">
+<div class="sw alt">
+<div class="container">
+  <div class="step-tag st-green"><span class="step-num" style="background:#085041">4</span>Шаг четвёртый</div>
+  <h2 class="sec-title">50 Идей — приоритизация и бюджет</h2>
+  <p class="sec-sub">Разработали 50 инициатив. Ранжировали по влиянию на цель 10%, сложности реализации и бюджету. Нажмите на карточку для детального разбора.</p>
+  <div class="embed-box">
+    <div id="ideas-embed">
+      <div class="w">
+        <div class="budget-bar">
+          <div class="bcard">Бюджет<span>70–100 млн ₽</span></div>
+          <div class="bcard">Горизонт<span>3 года</span></div>
+          <div class="bcard">Цель<span>3% → 10%</span></div>
+          <div class="bcard">Показано<span id="ideas-cnt">25 идей</span></div>
+        </div>
+        <div class="top-bar" id="ideas-filters"></div>
+        <div class="grid" id="ideas-grid"></div>
+        <div class="dp" id="ideas-dp">
+          <div class="dp-title" id="ideas-dp-title"></div>
+          <div class="dp-rat" id="ideas-dp-rat"></div>
+          <div class="dp-grid">
+            <div class="dp-cell"><div class="dp-label">Категория</div><div class="dp-val" id="ideas-dp-cat"></div></div>
+            <div class="dp-cell"><div class="dp-label">Бюджет</div><div class="dp-val" id="ideas-dp-bud"></div></div>
+            <div class="dp-cell"><div class="dp-label">Влияние (1–5)</div><div class="dp-val" id="ideas-dp-imp"></div></div>
+            <div class="dp-cell"><div class="dp-label">Барьер</div><div class="dp-val" id="ideas-dp-bar"></div></div>
+            <div class="dp-cell"><div class="dp-label">Сложность</div><div class="dp-val" id="ideas-dp-eff"></div></div>
+            <div class="dp-cell"><div class="dp-label">Когда</div><div class="dp-val" id="ideas-dp-when"></div></div>
+          </div>
+          <div class="road-title">Активность по годам</div>
+          <div class="road-row"><span class="road-yr">Год 1</span><div class="road-bar"><div class="road-fill" id="i-r1" style="background:#7F77DD"></div></div></div>
+          <div class="road-row"><span class="road-yr">Год 2</span><div class="road-bar"><div class="road-fill" id="i-r2" style="background:#1D9E75"></div></div></div>
+          <div class="road-row"><span class="road-yr">Год 3</span><div class="road-bar"><div class="road-fill" id="i-r3" style="background:#378ADD"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap">
+<div class="sw">
+<div class="container">
+  <div class="step-tag st-orange"><span class="step-num" style="background:#633806">5</span>Шаг пятый</div>
+  <h2 class="sec-title">Дорожная карта реализации</h2>
+  <p class="sec-sub">18 приоритетных инициатив, 91 млн рублей, 6 этапов — от быстрых побед первого квартала до системных продуктовых изменений третьего года.</p>
+
+  <div class="budget-block">
+    <div class="budget-block-lbl">Ключевые параметры реализации</div>
+    <div class="budget-nums">
+      <div class="budget-num"><div class="val">91 млн</div><div class="lbl">Общий бюджет</div></div>
+      <div class="budget-num"><div class="val">18</div><div class="lbl">Инициатив из 50</div></div>
+      <div class="budget-num"><div class="val">6</div><div class="lbl">Этапов реализации</div></div>
+      <div class="budget-num"><div class="val">20 000+</div><div class="lbl">Целевых молодых пайщиков</div></div>
+    </div>
+  </div>
+
+  <div class="embed-box">
+    <div id="rm-embed">
+      <div class="w">
+        <div class="bbar-label">Распределение бюджета 91 млн ₽ по этапам</div>
+        <div class="bbar-track">
+          <div class="bbar-seg" style="left:0;width:17%;background:#7F77DD"></div>
+          <div class="bbar-seg" style="left:17%;width:22%;background:#1D9E75"></div>
+          <div class="bbar-seg" style="left:39%;width:20%;background:#378ADD"></div>
+          <div class="bbar-seg" style="left:59%;width:18%;background:#BA7517"></div>
+          <div class="bbar-seg" style="left:77%;width:13%;background:#D85A30"></div>
+          <div class="bbar-seg" style="left:90%;width:10%;background:#888780"></div>
+        </div>
+        <div class="bbar-legend">
+          <div class="bl-item"><div class="bl-dot" style="background:#7F77DD"></div>Этап 1 — 16 млн</div>
+          <div class="bl-item"><div class="bl-dot" style="background:#1D9E75"></div>Этап 2 — 20 млн</div>
+          <div class="bl-item"><div class="bl-dot" style="background:#378ADD"></div>Этап 3 — 18 млн</div>
+          <div class="bl-item"><div class="bl-dot" style="background:#BA7517"></div>Этап 4 — 16 млн</div>
+          <div class="bl-item"><div class="bl-dot" style="background:#D85A30"></div>Этап 5 — 12 млн</div>
+          <div class="bl-item"><div class="bl-dot" style="background:#888780"></div>Этап 6 — 9 млн</div>
+        </div>
+        <div class="divider"></div>
+        <div id="rm-phases"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<footer>
+  <strong>CL Cup Russia 2026</strong> · Кейс УК «Современные Фонды Недвижимости»<br>
+  <span style="margin-top:8px;display:block">«Квадратные метры без сложностей: откройте рынок коммерческой недвижимости для молодёжи» · Changellenge >></span>
+</footer>
+
+<script>
+// ===== 15 WHY =====
+const whyData=[
+  {label:"Уровень 1 — Симптом",nodes:[
+    {q:"Почему молодёжь не покупает ЗПИФ?",a:"Не знают, что это такое",stat:"61% слышат впервые",color:"#7F77DD",textColor:"#26215C",statBg:"#EEEDFE",statColor:"#3C3489",detail:"По данным опроса: 33 из 70 (47%) впервые слышат «ЗПИФ». Ещё 31 человек (44%) слышали, но плохо понимают. Только 6 хорошо знают инструмент.",init:"→ Инициатива: массовая образовательная кампания «ЗПИФ за 2 минуты» в Telegram и YouTube"}
+  ]},
+  {label:"Уровень 2 — Почему не знают?",nodes:[
+    {q:"Почему не слышали о ЗПИФ?",a:"Нет продвижения там, где они сидят",stat:"Telegram — канал #1",color:"#378ADD",textColor:"#042C53",statBg:"#E6F1FB",statColor:"#0C447C",detail:"Приложение банка и Telegram — источник #1. СФН практически отсутствует в Telegram и не присутствует в рекомендательных алгоритмах YouTube.",init:"→ Инициатива: запуск Telegram-канала СФН + интеграция в финансовые каналы-миллионники"},
+    {q:"Почему не видят рекламы?",a:"Реклама идёт на аудиторию 45+",stat:"53% пайщиков — 58–71 год",color:"#378ADD",textColor:"#042C53",statBg:"#E6F1FB",statColor:"#0C447C",detail:"Маркетинг СФН исторически направлен на аудиторию 45+. Молодёжная аудитория не является целевой для текущих рекламных размещений.",init:"→ Инициатива: отдельный медиаплан для 18–35, таргетинг в VK/Telegram/YouTube"}
+  ]},
+  {label:"Уровень 3 — Даже те, кто слышал, не покупают. Почему?",nodes:[
+    {q:"Почему не понимают продукт?",a:"Сложный финансовый язык",stat:"Барьер #1 у 31 чел.",color:"#7F77DD",textColor:"#26215C",statBg:"#EEEDFE",statColor:"#3C3489",detail:"Термины «ПДУ», «СЧА», «квалифицированный инвестор» отпугивают. Официальные материалы написаны для аудитории с финансовым образованием.",init:"→ Инициатива: ребрендинг коммуникации — объяснение через аналогии (пай = доля в складе Ozon)"},
+    {q:"Почему боятся заморозить деньги?",a:"Срок 7–15 лет пугает",stat:"78% хотят максимум 3 года",color:"#1D9E75",textColor:"#04342C",statBg:"#E1F5EE",statColor:"#085041",detail:"78% заинтересованных готовы вложить максимум на 3 года. Реальный срок фондов СФН — 7–15 лет. Это главное структурное противоречие кейса.",init:"→ Инициатива: продвигать биржевые паи (Современный 9) — продаются как акция в любой день"},
+    {q:"Почему не доверяют?",a:"Нет социального доказательства",stat:"Нет историй молодых пайщиков",color:"#D85A30",textColor:"#4A1B0C",statBg:"#FAECE7",statColor:"#712B13",detail:"Все видимые кейсы пайщиков СФН — люди 50+. Молодой человек не видит «таких как я» среди инвесторов. Peer-proof — мощный психологический барьер.",init:"→ Инициатива: программа амбассадоров + публикация кейсов молодых пайщиков"}
+  ]},
+  {label:"Уровень 4 — Почему барьеры не преодолеваются?",nodes:[
+    {q:"Почему нет понятного входа?",a:"Не знают про 6 рублей",stat:"61% не знали о низком пороге",color:"#BA7517",textColor:"#412402",statBg:"#FAEEDA",statColor:"#633806",detail:"61% не знали, что минимальная сумма — от 6 рублей. Один этот факт убивает барьер «нет денег» мгновенно, но он нигде не коммуницируется.",init:"→ Инициатива: «6 рублей» как главный CTA во всех каналах — как «начни с кофе»"},
+    {q:"Почему не знают про ликвидность?",a:"Не знают, что паи торгуются на бирже",stat:"47% не знали о Мосбирже",color:"#1D9E75",textColor:"#04342C",statBg:"#E1F5EE",statColor:"#085041",detail:"47% не знали, что паи ЗПИФ «Современный 9» торгуются на Московской бирже — можно продать в любой момент. Это снимает главный страх заморозки.",init:"→ Инициатива: позиционирование «недвижимость с кнопкой продать»"},
+    {q:"Почему нет доверия к цифрам?",a:"Нет калькулятора доходности",stat:"17 из 28 хотят прозрачности",color:"#D85A30",textColor:"#4A1B0C",statBg:"#FAECE7",statColor:"#712B13",detail:"17 из 28 заинтересованных назвали прозрачность главным мотиватором. Нет интерактивного калькулятора, который показывает сколько заработаешь с 1000 рублей.",init:"→ Инициатива: калькулятор «вложи N рублей → получи X через Y лет» в СберОнлайн"}
+  ]},
+  {label:"Уровень 5 — Корневые причины",nodes:[
+    {q:"Почему продукт не адаптирован для молодёжи?",a:"Молодёжь никогда не была целевой",stat:"3% молодых пайщиков сегодня",color:"#7F77DD",textColor:"#26215C",statBg:"#EEEDFE",statColor:"#3C3489",detail:"ЗПИФы — исторически инструмент состоятельных инвесторов 45+. Вся продуктовая логика, коммуникация и дистрибуция строились под эту аудиторию.",init:"→ Корневая инициатива: выделить молодёжь как стратегический сегмент с отдельным P&L"},
+    {q:"Почему нет инфраструктуры для малых сумм?",a:"UX не рассчитан на 100–500 рублей",stat:"60% дохода у молодёжи — до 60к",color:"#BA7517",textColor:"#412402",statBg:"#FAEEDA",statColor:"#633806",detail:"Большинство молодых имеют доход до 60 000₽. Первая инвестиция 500–2000₽ психологически комфортна. Онбординг в СберОнлайн не выстроен под «микроинвестора».",init:"→ Корневая инициатива: молодёжный онбординг-сценарий в СберОнлайн с первым шагом от 100 рублей"},
+    {q:"Почему нет финансовой культуры?",a:"Молодёжь не учат инвестировать",stat:"Большинство — самооценка «низкий»",color:"#D85A30",textColor:"#4A1B0C",statBg:"#FAECE7",statColor:"#712B13",detail:"Финансовая грамотность в образовании крайне низкая. Большинство оценили свой уровень как «низкий». Это системная проблема, которую СФН может использовать как возможность.",init:"→ Корневая инициатива: партнёрство с университетами + образовательная платформа «Инвестиции с нуля»"}
+  ]}
+];
+
+(function(){
+  const tree=document.getElementById('why-tree');
+  whyData.forEach((lvl,li)=>{
+    if(li>0){const c=document.createElement('div');c.className='connector';c.textContent='↓';tree.appendChild(c);}
+    const ll=document.createElement('div');ll.className='level-label';ll.textContent=lvl.label;tree.appendChild(ll);
+    const row=document.createElement('div');row.className='row';
+    lvl.nodes.forEach(n=>{
+      const nd=document.createElement('div');nd.className='node';
+      nd.style.background=n.color+'18';nd.style.borderColor=n.color+'40';
+      nd.innerHTML=`<div class="node-q" style="color:${n.color}">${n.q}</div><div class="node-a" style="color:${n.textColor}">${n.a}</div><span class="node-stat" style="background:${n.statBg};color:${n.statColor}">${n.stat}</span>`;
+      nd.addEventListener('click',()=>{
+        document.querySelectorAll('#why-embed .node').forEach(x=>x.classList.remove('active'));
+        nd.classList.add('active');
+        const det=document.getElementById('why-detail');
+        document.getElementById('why-d-title').textContent=n.q+' → '+n.a;
+        document.getElementById('why-d-text').textContent=n.detail;
+        const ini=document.getElementById('why-d-init');
+        ini.textContent=n.init;ini.style.background=n.color+'15';ini.style.color=n.textColor;
+        det.classList.add('show');
+      });
+      row.appendChild(nd);
+    });
+    tree.appendChild(row);
+  });
+})();
+
+// ===== IDEAS =====
+const CATS={comm:{label:'Коммуникация',bg:'#E6F1FB',color:'#0C447C'},edu:{label:'Образование',bg:'#EEEDFE',color:'#3C3489'},dist:{label:'Дистрибуция',bg:'#FAEEDA',color:'#633806'},prod:{label:'Продукт',bg:'#E1F5EE',color:'#085041'},trust:{label:'Доверие',bg:'#FAECE7',color:'#712B13'},ux:{label:'UX/Онбординг',bg:'#FBEAF0',color:'#72243E'},partner:{label:'Партнёрства',bg:'#EAF3DE',color:'#27500A'}};
+const TIER={A:{label:'Приоритет A',bg:'#E1F5EE',color:'#085041'},B:{label:'Приоритет B',bg:'#EEEDFE',color:'#3C3489'},C:{label:'Приоритет C',bg:'#FAEEDA',color:'#633806'}};
+const ideas=[
+  {rank:1,tier:'A',cat:'dist',title:'Push вкладчикам 18–35 в СберОнлайн',desc:'Триггерный пуш при окончании вклада. Охват 5–10 млн молодых клиентов Сбера.',barrier:'Нет дистрибуции',budget:'5–8 млн',impact:5,effort:2,when:'Год 1, Q1',rat:'Самый мощный канал — уже есть интеграция со Сбером. 30 вкладчиков из опроса с 70% готовностью. Минимальный бюджет, максимальный охват.',r:[90,60,40]},
+  {rank:2,tier:'A',cat:'comm',title:'"6 рублей" как главный CTA везде',desc:'Переделать все материалы вокруг одного факта: начать за цену жвачки.',barrier:'Не знают порог входа',budget:'2–3 млн',impact:5,effort:1,when:'Год 1, Q1',rat:'61% не знали про 6 рублей. Один месседж снимает барьер "нет денег". Запускается за 2 недели без разработки.',r:[100,50,30]},
+  {rank:3,tier:'A',cat:'ux',title:'Калькулятор доходности в СберОнлайн',desc:'Виджет: вложи N рублей → сколько получишь через 1/3/5 лет.',barrier:'Нет прозрачности',budget:'8–12 млн',impact:5,effort:3,when:'Год 1, Q2',rat:'17 из 28 заинтересованных назвали прозрачность главным мотиватором. Переводит абстрактную доходность в конкретные рубли.',r:[70,90,50]},
+  {rank:4,tier:'A',cat:'comm',title:'Серия "ЗПИФ за 2 минуты" в Reels/Shorts',desc:'10 коротких роликов, каждый объясняет один аспект. Таргет на 18–35.',barrier:'Не понимают продукт',budget:'6–10 млн',impact:5,effort:2,when:'Год 1, Q1–Q2',rat:'Видео — главный формат для 18–35. YouTube и Telegram — источники #1. Reels/Shorts даёт органику без затрат.',r:[90,70,40]},
+  {rank:5,tier:'A',cat:'comm',title:'Аналогия: "Ozon платит тебе аренду"',desc:'Коммуникация через конкретных арендаторов: Ozon, Сберлогистика.',barrier:'Сложный финансовый язык',budget:'1–2 млн',impact:4,effort:1,when:'Год 1, Q1',rat:'"Ты заказываешь на Ozon — зарабатывай на их складе" — мгновенно понятная концепция без объяснений.',r:[100,60,30]},
+  {rank:6,tier:'A',cat:'dist',title:'Telegram-канал СФН для молодёжи',desc:'Отдельный канал: объяснения, мемы, кейсы. Посев в топ-50 финансовых каналах.',barrier:'Нет продвижения',budget:'8–12 млн',impact:4,effort:2,when:'Год 1, Q1',rat:'Telegram — канал доверия #1 по опросу. Посев в финканалах даёт охват 2–5 млн целевой аудитории.',r:[80,80,70]},
+  {rank:7,tier:'A',cat:'prod',title:'Биржевой пай как "кнопка продать"',desc:'Лендинг Современного 9: пай = акция на бирже, продаётся за секунду.',barrier:'Страх заморозки на 15 лет',budget:'4–6 млн',impact:5,effort:2,when:'Год 1, Q2',rat:'78% хотят до 3 лет. 47% не знали о биржевом обращении. Один факт снимает главный структурный барьер.',r:[70,90,60]},
+  {rank:8,tier:'A',cat:'trust',title:'Программа амбассадоров-студентов',desc:'20 молодых пайщиков с контент-планом рассказывают свою историю.',barrier:'Нет peer-proof',budget:'5–8 млн',impact:4,effort:2,when:'Год 1, Q2',rat:'Советы друзей — источник доверия #3. 20 амбассадоров с аудиторией 100–200k = постоянный органический охват.',r:[60,90,80]},
+  {rank:9,tier:'A',cat:'ux',title:'Онбординг за 3 шага в СберИнвестиции',desc:'Редизайн флоу первой покупки. Без лишних экранов и сложных терминов.',barrier:'Сложность оформления',budget:'10–15 млн',impact:5,effort:4,when:'Год 1, Q3',rat:'Упрощение до 3 шагов увеличивает конверсию в 1.5–2x — доказано на любом финтех-продукте.',r:[40,100,60]},
+  {rank:10,tier:'A',cat:'comm',title:'Коллаборации с топ-10 финблогерами',desc:'Платные интеграции: честные обзоры фондов, не реклама.',barrier:'Нет продвижения в их каналах',budget:'10–15 млн',impact:4,effort:2,when:'Год 1, Q2',rat:'10 блогеров × 500k × 5% вовлечённость = 250k целевых контактов за квартал.',r:[70,80,60]},
+  {rank:11,tier:'B',cat:'partner',title:'Партнёрство с ИТМО, ВШЭ, РАНХиГС',desc:'Гостевые лекции, кейсы на чемпионатах, совместные курсы.',barrier:'Нет финансовой культуры',budget:'5–8 млн',impact:4,effort:3,when:'Год 1, Q3',rat:'Вузы = доступ к 18–24 без затрат на таргетинг. 300 мест = 300 горячих контактов за 1 день.',r:[50,80,70]},
+  {rank:12,tier:'B',cat:'ux',title:'Сравнение ЗПИФ vs вклад в интерфейсе',desc:'При просмотре вклада показывать: "Рядом ЗПИФ с доходностью выше".',barrier:'Вкладчики не видят альтернативы',budget:'6–10 млн',impact:5,effort:3,when:'Год 2, Q1',rat:'30 из 70 держат деньги на вкладе. Контекстуальный маркетинг в 3x лучше баннерной рекламы.',r:[30,100,60]},
+  {rank:13,tier:'B',cat:'trust',title:'Лайв-стрим с управляющим фондом',desc:'Ежемесячный прямой эфир в Telegram: управляющий отвечает на вопросы.',barrier:'Не доверяют компании',budget:'2–4 млн',impact:4,effort:2,when:'Год 1, Q2',rat:'Живой человек, отвечающий публично — лучший инструмент доверия. BlackRock, Vanguard делают то же самое.',r:[60,80,80]},
+  {rank:14,tier:'B',cat:'edu',title:'Образовательный хаб на сайте СФН',desc:'Бесплатный мини-курс: 5 уроков от "что такое пай" до "как купить".',barrier:'Нет финансовой культуры',budget:'4–6 млн',impact:4,effort:3,when:'Год 1, Q3',rat:'13 из 28 хотят обучающие материалы. SEO-эффект приводит органический трафик годами.',r:[40,80,70]},
+  {rank:15,tier:'B',cat:'comm',title:'Сравнение: депозит vs ЗПИФ на цифрах',desc:'Инфографика: 100 000 ₽ на 3 года — вклад X, ЗПИФ Y.',barrier:'Не понимают выгоду',budget:'1–2 млн',impact:4,effort:1,when:'Год 1, Q1',rat:'При текущей ставке разрыв доходности в пользу ЗПИФ значительный — это надо показывать конкретными цифрами.',r:[100,70,50]},
+  {rank:16,tier:'B',cat:'trust',title:'Открытые экскурсии на объекты фондов',desc:'Ежеквартальный тур по складу для молодых и потенциальных пайщиков.',barrier:'Нет доверия к активам',budget:'3–5 млн',impact:3,effort:2,when:'Год 2, Q1',rat:'Физический контакт с активом снимает абстрактный страх. Контент с экскурсии живёт 6–12 месяцев в соцсетях.',r:[20,80,80]},
+  {rank:17,tier:'B',cat:'ux',title:'Нотификации о выплатах как "зарплата"',desc:'"Сегодня тебе пришло 47 ₽ с твоего склада" — пуш в момент выплаты.',barrier:'Нет ощущения работающих денег',budget:'2–4 млн',impact:4,effort:2,when:'Год 1, Q3',rat:'Ежеквартальная выплата — главное эмоциональное событие. Правильный пуш создаёт привычку и удерживает.',r:[50,90,80]},
+  {rank:18,tier:'B',cat:'dist',title:'Реферальная программа "приведи друга"',desc:'Бонусные паи за каждого приведённого нового пайщика.',barrier:'Нет социального доказательства',budget:'8–12 млн',impact:4,effort:3,when:'Год 2, Q1',rat:'CAC через реферала в 2–3x ниже рекламного. Работает у Тинькофф, Revolut, Robinhood.',r:[20,90,80]},
+  {rank:19,tier:'B',cat:'comm',title:'Инфлюенсер-тур по объектам фондов',desc:'5 финблогеров на экскурсии по складу Обухово/Домодедово.',barrier:'Нет доверия к активам',budget:'3–5 млн',impact:4,effort:2,when:'Год 1, Q2',rat:'Один ролик блогера = 500k–2 млн просмотров. Органика доверяется больше прямой рекламы.',r:[80,40,20]},
+  {rank:20,tier:'B',cat:'prod',title:'Накопление на цель: "на первый взнос"',desc:'"Откладывай в ЗПИФ — накопи на ипотечный взнос быстрее".',barrier:'Нет понятной цели',budget:'4–6 млн',impact:4,effort:3,when:'Год 2, Q2',rat:'ЗПИФ как инструмент накопления — новое позиционирование, конкурирующее с вкладом, а не с акциями.',r:[20,80,70]},
+  {rank:21,tier:'B',cat:'ux',title:'Welcome-пак после первой покупки',desc:'Email/пуш-серия: что дальше, как читать отчёты, когда выплата.',barrier:'Страх после покупки',budget:'2–3 млн',impact:3,effort:2,when:'Год 1, Q2',rat:'5 писем за первые 30 дней снижают отток в 2x. Дешевле нового привлечения.',r:[70,80,70]},
+  {rank:22,tier:'B',cat:'comm',title:'Мем-контент про инвестиции',desc:'Мемы про "владеть складом Ozon" — вирусный охват без бюджета.',barrier:'Серьёзный тон отпугивает',budget:'1–2 млн',impact:3,effort:1,when:'Год 1, Q1',rat:'Мемы — нативный язык 18–25. Снижает психологический барьер серьёзности финансового продукта.',r:[90,70,50]},
+  {rank:23,tier:'B',cat:'partner',title:'Кейс-чемпионаты в вузах',desc:'Спонсировать кейсы на Changellenge, Talents, олимпиадах.',barrier:'Нет осведомлённости у студентов',budget:'3–5 млн',impact:3,effort:2,when:'Год 1, Q3',rat:'Участники чемпионатов — самые финансово активные студенты. Репутационный эффект долгосрочный.',r:[60,80,80]},
+  {rank:24,tier:'C',cat:'prod',title:'Накопительный сценарий "500 ₽/мес"',desc:'Автопополнение — каждый месяц докупает паи на выбранную сумму.',barrier:'Нет денег сразу',budget:'10–15 млн',impact:4,effort:4,when:'Год 2, Q2',rat:'Регулярные инвестиции психологически комфортнее единовременных. Требует технической разработки.',r:[10,60,90]},
+  {rank:25,tier:'C',cat:'prod',title:'Фонд с горизонтом 2–3 года',desc:'Новый продукт специально для молодёжи — короткий срок, биржевое обращение.',barrier:'78% хотят до 3 лет',budget:'Продуктовые затраты',impact:5,effort:5,when:'Год 3',rat:'Структурное решение главного противоречия кейса. Требует полного цикла запуска фонда.',r:[10,40,100]},
+];
+
+let iFilter='all',iSel=null;
+function renderIFilters(){
+  const f=document.getElementById('ideas-filters');f.innerHTML='';
+  [{k:'all',label:'Все (25)'},{k:'A',label:'Приоритет A'},{k:'B',label:'Приоритет B'},{k:'C',label:'Приоритет C'}].forEach(({k,label})=>{
+    const b=document.createElement('button');b.className='tbtn'+(iFilter===k?' on':'');b.textContent=label;
+    if(k!=='all'&&TIER[k]&&iFilter===k){b.style.background=TIER[k].bg;b.style.color=TIER[k].color;b.style.borderColor=TIER[k].color+'60';}
+    b.onclick=()=>{iFilter=k;renderIFilters();renderIGrid();};f.appendChild(b);
+  });
+  [...new Set(ideas.map(i=>i.cat))].forEach(k=>{
+    const cnt=ideas.filter(i=>i.cat===k).length;
+    const b=document.createElement('button');b.className='tbtn'+(iFilter===k?' on':'');b.textContent=CATS[k].label+' ('+cnt+')';
+    if(iFilter===k){b.style.background=CATS[k].bg;b.style.color=CATS[k].color;b.style.borderColor=CATS[k].color+'60';}
+    b.onclick=()=>{iFilter=k;renderIFilters();renderIGrid();};f.appendChild(b);
+  });
+}
+function renderIGrid(){
+  const g=document.getElementById('ideas-grid');g.innerHTML='';
+  const list=ideas.filter(i=>iFilter==='all'?true:['A','B','C'].includes(iFilter)?i.tier===iFilter:i.cat===iFilter);
+  document.getElementById('ideas-cnt').textContent=list.length+' идей';
+  list.forEach(idea=>{
+    const cat=CATS[idea.cat],tier=TIER[idea.tier];
+    const card=document.createElement('div');card.className='card'+(iSel===idea.rank?' sel':'');
+    card.innerHTML=`<div class="card-rank" style="background:${tier.bg};color:${tier.color}">${tier.label}</div>
+      <div class="card-top"><span class="card-num">#${idea.rank}</span><span class="card-title">${idea.title}</span></div>
+      <div class="card-desc">${idea.desc}</div>
+      <div class="card-meta"><span class="pill" style="background:${cat.bg};color:${cat.color}">${cat.label}</span>
+      <span class="stars">${'★'.repeat(idea.impact)+'☆'.repeat(5-idea.impact)} · ${idea.budget} · ${idea.when}</span></div>`;
+    card.onclick=()=>{
+      iSel=idea.rank;document.querySelectorAll('#ideas-embed .card').forEach(c=>c.classList.remove('sel'));card.classList.add('sel');
+      document.getElementById('ideas-dp-title').textContent='#'+idea.rank+' '+idea.title;
+      document.getElementById('ideas-dp-rat').textContent=idea.rat;
+      document.getElementById('ideas-dp-cat').textContent=CATS[idea.cat].label;
+      document.getElementById('ideas-dp-bud').textContent=idea.budget;
+      document.getElementById('ideas-dp-imp').textContent='★'.repeat(idea.impact)+'☆'.repeat(5-idea.impact)+' ('+idea.impact+'/5)';
+      document.getElementById('ideas-dp-bar').textContent=idea.barrier;
+      document.getElementById('ideas-dp-eff').textContent='●'.repeat(idea.effort)+'○'.repeat(5-idea.effort)+' ('+idea.effort+'/5)';
+      document.getElementById('ideas-dp-when').textContent=idea.when;
+      ['i-r1','i-r2','i-r3'].forEach((id,i)=>document.getElementById(id).style.width=idea.r[i]+'%');
+      document.getElementById('ideas-dp').classList.add('show');
+    };
+    g.appendChild(card);
+  });
+}
+renderIFilters();renderIGrid();
+
+// ===== ROADMAP =====
+const CAT={comm:{label:'Коммуникация',bg:'#E6F1FB',color:'#0C447C'},edu:{label:'Образование',bg:'#EEEDFE',color:'#3C3489'},dist:{label:'Дистрибуция',bg:'#FAEEDA',color:'#633806'},prod:{label:'Продукт',bg:'#E1F5EE',color:'#085041'},trust:{label:'Доверие',bg:'#FAECE7',color:'#712B13'},ux:{label:'UX/Онбординг',bg:'#FBEAF0',color:'#72243E'},partner:{label:'Партнёрства',bg:'#EAF3DE',color:'#27500A'}};
+const phases=[
+  {id:1,year:'Год 1',quarter:'Q1 (мес. 1–3)',color:'#7F77DD',bg:'#EEEDFE',textColor:'#26215C',title:'Быстрый запуск — снимаем главные барьеры',budget:'16 млн ₽',count:5,target:'500k охвата, 500 новых пайщиков',ideas:[
+    {n:2,cat:'comm',title:'"6 рублей" как главный CTA',budget:'2 млн',dur:'2 нед',impact:5,detail:'Переделать все рекламные материалы вокруг одного факта. 61% не знали — один месседж снимает барьер мгновенно.'},
+    {n:5,cat:'comm',title:'Аналогия: "Ozon платит тебе аренду"',budget:'2 млн',dur:'2 нед',impact:4,detail:'Пересобрать описания через понятные бренды-арендаторы. "Ты заказываешь на Ozon — зарабатывай на их складе".'},
+    {n:15,cat:'comm',title:'Вклад vs ЗПИФ на цифрах',budget:'1 млн',dur:'2 нед',impact:4,detail:'Инфографика: 100 000 ₽ на 3 года. Обновляется ежеквартально при изменении ставок.'},
+    {n:6,cat:'dist',title:'Telegram-канал СФН для молодёжи',budget:'5 млн',dur:'1 мес',impact:4,detail:'Контент 18–35: мемы, кейсы, объяснения. Посев в топ-50 финансовых каналах = охват 2–5 млн.'},
+    {n:22,cat:'comm',title:'Мем-контент про инвестиции',budget:'1 млн',dur:'2 нед',impact:3,detail:'Нативный язык аудитории 18–25. Вирусный охват без затрат на таргетинг.'},
+  ]},
+  {id:2,year:'Год 1',quarter:'Q2 (мес. 4–6)',color:'#1D9E75',bg:'#E1F5EE',textColor:'#04342C',title:'Контент и доверие — объясняем продукт',budget:'20 млн ₽',count:5,target:'2 000 пайщиков, осведомлённость 40%',ideas:[
+    {n:4,cat:'edu',title:'Серия "ЗПИФ за 2 минуты" Reels/Shorts',budget:'7 млн',dur:'2 мес',impact:5,detail:'10 роликов 60–90 сек, таргет на 18–35. YouTube и Telegram — источники #1 по опросу.'},
+    {n:7,cat:'prod',title:'Биржевой пай как "кнопка продать"',budget:'4 млн',dur:'1 мес',impact:5,detail:'Лендинг Современного 9. 47% не знали о биржевом обращении — один факт снимает главный страх.'},
+    {n:10,cat:'comm',title:'Коллаборации с топ-10 финблогерами',budget:'6 млн',dur:'2 мес',impact:4,detail:'Честные обзоры, не реклама. 250k целевых контактов за квартал.'},
+    {n:19,cat:'comm',title:'Инфлюенсер-тур по объектам',budget:'3 млн',dur:'1 мес',impact:4,detail:'5 блогеров на складе Обухово/Домодедово. Органика 500k–2 млн просмотров.'},
+    {n:13,cat:'trust',title:'Лайв-стримы с управляющим фондом',budget:'2 млн',dur:'ежемесячно',impact:4,detail:'Прямой эфир в Telegram. Публичные ответы на неудобные вопросы = доверие.'},
+  ]},
+  {id:3,year:'Год 1',quarter:'Q3–Q4 (мес. 7–12)',color:'#378ADD',bg:'#E6F1FB',textColor:'#042C53',title:'Дистрибуция — встраиваем в экосистему Сбера',budget:'18 млн ₽',count:3,target:'5 000 пайщиков, доля 5%',ideas:[
+    {n:1,cat:'dist',title:'Push вкладчикам 18–35 в СберОнлайн',budget:'6 млн',dur:'3 мес',impact:5,detail:'Триггер при окончании вклада. 5–10 млн молодых клиентов Сбера. Минимальный бюджет — максимальный охват.'},
+    {n:3,cat:'ux',title:'Калькулятор доходности в СберОнлайн',budget:'10 млн',dur:'4 мес',impact:5,detail:'Виджет в карточке фонда: вложи N → получишь X. 17 из 28 назвали прозрачность главным мотиватором.'},
+    {n:12,cat:'ux',title:'Сравнение ЗПИФ vs вклад в интерфейсе',budget:'6 млн',dur:'3 мес',impact:5,detail:'При просмотре вклада показывать альтернативу рядом. Самый горячий момент для конверсии.'},
+  ]},
+  {id:4,year:'Год 2',quarter:'Q1–Q2 (мес. 13–18)',color:'#BA7517',bg:'#FAEEDA',textColor:'#412402',title:'Масштабирование — образование и партнёрства',budget:'16 млн ₽',count:3,target:'10 000 пайщиков, доля 7%',ideas:[
+    {n:9,cat:'ux',title:'Онбординг за 3 шага в СберИнвестиции',budget:'12 млн',dur:'5 мес',impact:5,detail:'Редизайн флоу первой покупки. 3 шага вместо 7+ экранов увеличивают конверсию в 1.5–2x.'},
+    {n:11,cat:'partner',title:'Партнёрство с ИТМО, ВШЭ, РАНХиГС',budget:'5 млн',dur:'6 мес',impact:4,detail:'Гостевые лекции и кейсы. Прямой доступ к аудитории 18–24 без затрат на таргетинг.'},
+    {n:14,cat:'edu',title:'Образовательный хаб на сайте СФН',budget:'5 млн',dur:'3 мес',impact:4,detail:'5 уроков от "что такое пай" до "как купить". SEO-эффект приводит трафик годами.'},
+  ]},
+  {id:5,year:'Год 2',quarter:'Q3–Q4 (мес. 19–24)',color:'#D85A30',bg:'#FAECE7',textColor:'#4A1B0C',title:'Удержание и реферал',budget:'12 млн ₽',count:2,target:'15 000 пайщиков, доля 8.5%',ideas:[
+    {n:8,cat:'trust',title:'Программа амбассадоров-студентов',budget:'6 млн',dur:'6 мес',impact:4,detail:'20 молодых пайщиков с контент-планом. 100–200k аудитории = постоянный органический охват.'},
+    {n:18,cat:'dist',title:'Реферальная программа "приведи друга"',budget:'10 млн',dur:'постоянно',impact:4,detail:'Бонусные паи за нового пайщика. CAC через реферал в 2–3x ниже рекламного.'},
+  ]},
+  {id:6,year:'Год 3',quarter:'Q1–Q4 (мес. 25–36)',color:'#5F5E5A',bg:'#F1EFE8',textColor:'#2C2C2A',title:'Продуктовые инновации — долгосрочный задел',budget:'9 млн ₽',count:2,target:'20 000+ пайщиков, доля 10%+',ideas:[
+    {n:17,cat:'ux',title:'Дашборд + нотификации о выплатах',budget:'6 млн',dur:'5 мес',impact:4,detail:'"Сегодня пришло 47 ₽ с твоего склада" — пуш в момент выплаты. Создаёт привычку и удерживает клиента.'},
+    {n:24,cat:'prod',title:'Накопительный сценарий "500 ₽/мес"',budget:'12 млн',dur:'6 мес',impact:4,detail:'Автопополнение паев ежемесячно. Регулярные инвестиции психологически комфортнее единовременных.'},
+  ]},
+];
+
+const rmCont=document.getElementById('rm-phases');
+phases.forEach(ph=>{
+  const block=document.createElement('div');block.className='phase';
+  const head=document.createElement('div');head.className='ph-head';head.style.background=ph.bg;
+  head.innerHTML=`<div><div style="display:flex;align-items:center;gap:8px;margin-bottom:3px">
+    <span class="ph-badge" style="background:${ph.color};color:#fff">${ph.year} · ${ph.quarter}</span>
+    <span class="ph-title" style="color:${ph.textColor}">${ph.title}</span></div>
+    <div class="ph-stats" style="color:${ph.textColor};opacity:.7">
+      <span>Бюджет: <b style="color:${ph.textColor}">${ph.budget}</b></span>
+      <span>Инициатив: <b>${ph.count}</b></span>
+      <span>Цель: ${ph.target}</span>
+    </div></div>`;
+  block.appendChild(head);
+  const ig=document.createElement('div');ig.className='ig';
+  ph.ideas.forEach(idea=>{
+    const cat=CAT[idea.cat];
+    const card=document.createElement('div');card.className='idea';
+    const dots=Array.from({length:5},(_,i)=>`<div class="dot" style="background:${i<idea.impact?ph.color:'#E2EAF4'}"></div>`).join('');
+    card.innerHTML=`<div class="idea-top"><span class="idea-num">#${idea.n}</span><span class="idea-title">${idea.title}</span>
+      <span class="idea-cat" style="background:${cat.bg};color:${cat.color}">${cat.label}</span></div>
+      <div class="idea-row"><span class="idea-budget">${idea.budget}</span><span class="idea-dur">${idea.dur}</span>
+      <div class="impact-dots">${dots}</div></div>
+      <div class="detail">${idea.detail}</div>`;
+    card.addEventListener('click',()=>{
+      const det=card.querySelector('.detail');const open=det.classList.contains('show');
+      card.classList.toggle('open',!open);
+      if(!open)det.classList.add('show');else{card.classList.remove('open');det.classList.remove('show');}
+    });
+    ig.appendChild(card);
+  });
+  block.appendChild(ig);
+  const tot=document.createElement('div');tot.className='ph-total';
+  tot.innerHTML=`<b>${ph.budget}</b> · <b>${ph.count} инициатив</b> · ${ph.target}`;
+  block.appendChild(tot);rmCont.appendChild(block);
+});
+
+const div=document.createElement('div');div.className='divider';rmCont.appendChild(div);
+const excl=document.createElement('div');
+excl.style.cssText='padding:14px;border-radius:10px;border:.5px solid #E2EAF4;background:#F4F7FC';
+excl.innerHTML=`<div style="font-size:12px;font-weight:600;color:#4A5568;margin-bottom:8px">32 идеи отклонены или отложены — причины</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:4px">
+${['Дробные паи от 1 рубля (нужен регулятор — 18+ мес.)','Интеграция с Т-Банк (12+ мес. переговоров)','Фонд с горизонтом 2–3 года (продуктовый цикл 12+ мес.)','NFT-паспорт пайщика (нет доказанного эффекта)','Подкаст (низкий ROI для молодёжи 18–25)','Игра-симулятор (6 мес. разработки, неясный конверт)','+ ещё 26 идей отложены на 4-й год или отклонены'].map(e=>`<div style="font-size:11px;color:#8A96A8;padding:3px 0;border-bottom:.5px solid #E2EAF4">${e}</div>`).join('')}
+</div>`;
+rmCont.appendChild(excl);
+</script>
+</body>
+</html>
